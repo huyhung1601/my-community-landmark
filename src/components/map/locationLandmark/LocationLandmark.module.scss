@@ -1,0 +1,10 @@
+@import '../../../styles/variables.scss';
+
+.locationLandmark{
+    position: relative;
+    .locationIcon{
+        cursor: pointer;
+        font-size: 50px;        
+    }
+}
+

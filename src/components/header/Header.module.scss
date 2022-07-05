@@ -1,0 +1,10 @@
+@import "../../styles/variables.scss";
+
+.header{
+    height: $headerHeight;
+    padding: 0 1.5rem;
+    background: rgba($dark, 0.9);
+    color: $white;
+    display: grid;
+    place-items: center;
+}

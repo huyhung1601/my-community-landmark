@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.card{
+    font-size: 11px;
+    display: grid;
+    grid-template-rows: minmax(20px, 25px) auto minmax(0, 25px);
+    min-width: 100px;
+    min-height: 120px;
+    background-color: rgba($gray, 0.8);
+    padding: 2px;
+    top: 40px;
+    left: 10px;
+    z-index: 50;
+    backdrop-filter: blur(4);
+    position: absolute;
+    border-radius: $borderRadius-sm;
+    button{
+        font-size: 8px;
+        margin-right: 2px;
+        min-width: 18px;
+        height: 18px;
+        background:transparent;
+        border: 1px solid $white;
+        color: $white;
+        border-radius: $borderRadius-sm
+    }
+    &_header{
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid $white;
+        .editBtn{
+            color: $white; 
+            &_active{
+                color: $primary
+            }
+        }
+        
+    };
+    &_content{
+        padding: 2px;
+    };
+    &_footer{
+        border-top: 1px solid $white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}

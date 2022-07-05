@@ -1,0 +1,14 @@
+.noteContent{
+    line-height: normal;
+    .noteInput{
+        font-size: 12px;
+        width: 100%;
+        min-width: 100px;
+        max-width: 160px;
+        outline: none;
+        border: none;
+    }
+    .noteBox{
+        width: 100px;
+    }
+}

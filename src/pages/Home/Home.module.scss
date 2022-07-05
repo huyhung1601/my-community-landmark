@@ -1,0 +1,12 @@
+@import "../../styles/variables.scss";
+
+.container {
+    .mapContainer{
+        padding: 5px;
+        width: 100%;
+        height: calc(100vh - $headerHeight ); 
+        display: grid;
+        grid-template-columns: 1fr; 
+        position: relative;
+    }
+}
