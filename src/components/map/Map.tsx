@@ -29,8 +29,9 @@ const defaultLandmarkNote = {
 export const Map = () => {
   const { landmarks, createLandmark, editLandmark } =
     useContext(LandmarksContext);
-  // const [landmarkNote, setLandmarkNote] = useState<ILandmark>(initialValue);
-  const [search, , handleSearchChange, resetSearch] = useForm({ search: "" });
+  const [search, , handleSearchChange, resetSearch] = useForm({
+    search: "",
+  });
   const [
     landmarkNote,
     setLandmarkNote,
@@ -43,7 +44,7 @@ export const Map = () => {
   const mapRef = useRef<null | google.maps.Map>(null);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCI8_Ko2BNbAclrNjO1pVG6i5Foyy8Vhq0",
+    googleMapsApiKey: process.env.GOOGLE_MAP_KEY,
   });
 
   const { onMapLoad, onMapClick, navigateMe, navigateTo } = useMap({
@@ -52,6 +53,7 @@ export const Map = () => {
     mapRef,
     setLandmarkNote,
     setOpen,
+    setIsEditable,
   });
 
   const handleSaveLandmark = () => {
@@ -81,8 +83,8 @@ export const Map = () => {
   );
 
   const onSearch = useCallback(() => {
-    if (search !== "") {
-      const words = search.toLocaleLowerCase().split(" ");
+    if (search.search !== "") {
+      const words = search.search.toLowerCase().split(" ");
       const filteredItems = landmarks.filter(
         (landmark) =>
           words.includes(landmark.username.toLowerCase()) ||
@@ -111,7 +113,7 @@ export const Map = () => {
   };
 
   const makers = () => {
-    if (search === "") {
+    if (search.search === "") {
       return landmarks;
     } else {
       return filteredLandmarks;
@@ -139,10 +141,10 @@ export const Map = () => {
         ))}
       </GoogleMap>
       <ControlBar
-        clearSearch={resetSearch}
+        resetSearch={resetSearch}
         onSearch={onSearch}
         handleSearchChange={handleSearchChange}
-        search={search.search}
+        search={search.text}
         navigateMe={navigateMe}
       />
       {open && (
@@ -150,7 +152,7 @@ export const Map = () => {
           landmarkNote={landmarkNote}
           isEditable={isEditable}
           onChange={handleLandmarkNoteChange}
-          onSave={() => handleSaveLandmark()}
+          onSave={handleSaveLandmark}
           onEdit={() => setIsEditable((p) => !p)}
           onClose={onClose}
         />

@@ -48,7 +48,6 @@ const initialValue = [
   {
     id: v4(),
     username: "Thomas",
-
     note: "Adelaide city is peacful and gorgous",
     lat: -34.451821623832856,
     lng: 138.48282681629127,
@@ -56,7 +55,6 @@ const initialValue = [
   {
     id: v4(),
     username: "Thomas",
-
     note: "Lakes in Southern Australia ",
     lat: -31.8771489647849,
     lng: 136.41739712879127,

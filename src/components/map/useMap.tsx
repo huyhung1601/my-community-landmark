@@ -7,6 +7,7 @@ interface IUseMap {
   mapRef: React.MutableRefObject<google.maps.Map | null>;
   setLandmarkNote: React.Dispatch<React.SetStateAction<ILandmark>>;
   setOpen: (value: React.SetStateAction<boolean>) => void;
+  setIsEditable: (value: React.SetStateAction<boolean>) => void;
 }
 
 export const useMap = ({
@@ -15,6 +16,7 @@ export const useMap = ({
   mapRef,
   setOpen,
   setLandmarkNote,
+  setIsEditable,
 }: IUseMap) => {
   const navigateTo = useCallback(
     ({ lat, lng }: { lat: number; lng: number }) => {
@@ -46,7 +48,7 @@ export const useMap = ({
     };
 
     const navigateFail = (err: any) => {
-      return null;
+      throw err;
     };
     navigator.geolocation?.getCurrentPosition(
       navigateSucces,
@@ -70,8 +72,9 @@ export const useMap = ({
       navigateTo({ lat, lng });
       setLandmarkNote({ ...defaultLandmarkNote, lat, lng });
       setOpen(true);
+      setIsEditable(false);
     },
-    [defaultLandmarkNote, navigateTo, setOpen, setLandmarkNote]
+    [defaultLandmarkNote, setIsEditable, navigateTo, setOpen, setLandmarkNote]
   );
   return { navigateMe, onMapLoad, onMapClick, navigateTo };
 };

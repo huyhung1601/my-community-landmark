@@ -16,6 +16,7 @@ export const useForm = (initialValues: any) => {
 
   const resetValues = useCallback(() => {
     setValues(initialValues);
-  }, [initialValues]);
+  }, [initialValues, setValues]);
+
   return [values, setValues, handleChange, resetValues];
 };

@@ -6,7 +6,7 @@ interface IProps {
   search: string;
   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSearch: () => void;
-  clearSearch: () => void;
+  resetSearch: () => void;
 }
 
 export const ControlBar: React.FC<IProps> = ({
@@ -14,7 +14,7 @@ export const ControlBar: React.FC<IProps> = ({
   navigateMe,
   handleSearchChange,
   onSearch,
-  clearSearch,
+  resetSearch,
 }) => {
   return (
     <div className={classes.controlBar}>
@@ -33,9 +33,6 @@ export const ControlBar: React.FC<IProps> = ({
           className={classes.searchBar_input}
           type="text"
         />
-        <button onClick={clearSearch} className={classes.clearSearch_btn}>
-          x
-        </button>
       </div>
     </div>
   );
